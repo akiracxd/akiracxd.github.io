@@ -77,3 +77,10 @@ document.addEventListener("DOMContentLoaded", function() {
         alert(`Вы правильно ответили на ${correctAnswers} из ${questions.length} вопросов.`);
     }
 });
+function toggleMenu() {
+    const nav = document.querySelector(".nav");
+    const burger = document.querySelector(".burger-menu");
+    nav.classList.toggle("active");
+    burger.classList.toggle("open");
+}
+

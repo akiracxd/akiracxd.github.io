@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тесты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -11,10 +12,17 @@
     <div class="container">
         <header class="header">
             <div class="logo"><a href="index.html">ОхУжЭтиСети</a></div>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
             <nav class="nav">
-                <a href="index.html">Главная</a>
-                <a href="about.html">О нас</a>
-                <a href="tests.html">Тесты</a>
+                <div class="nav-links">
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О нас</a>
+                    <a href="tests.html">Тесты</a>
+                </div>
             </nav>
         </header>
         <main class="content">

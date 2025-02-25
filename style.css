@@ -1,14 +1,14 @@
-/* Общие стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 body {
     background-color: #fff;
-    color: #333;
+    color: #303030;
 }
 
 .container {
@@ -17,7 +17,6 @@ body {
     margin: 0 auto;
 }
 
-/* Шапка */
 .header {
     display: flex;
     justify-content: space-between;
@@ -36,6 +35,24 @@ body {
     color: #f8743c;
 }
 
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger-menu div {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 5px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav {
+    display: flex;
+}
+
 .nav a {
     color: #333;
     text-decoration: none;
@@ -47,7 +64,40 @@ body {
     color: #f8743c;
 }
 
-/* Контент */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        width: 200px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        display: none;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .burger-menu.open div:first-child {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger-menu.open div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.open div:last-child {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
 .content {
     display: flex;
     justify-content: space-between;
@@ -85,7 +135,6 @@ h1 {
     background: #e6632a;
 }
 
-/* Заглушка для фото */
 .image-placeholder {
     width: 300px;
     height: 300px;
@@ -98,15 +147,7 @@ h1 {
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-/* Обертка для контента на странице тестов */
-.content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-}
 
-/* Левая панель с темами */
 .sidebar {
     width: 25%;
     padding: 20px;
@@ -144,11 +185,10 @@ h1 {
     color: #fff;
 }
 
-/* Блок с тестами */
 .test-container {
     width: 70%;
     padding: 20px;
-    background-color: #e8ecec; /* Добавлен фон */
+    background-color: #e8ecec;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -180,7 +220,6 @@ h1 {
     margin-right: 10px;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .content {
         flex-direction: column;
