@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: #fff;
     color: #333;
 }
 
@@ -22,25 +22,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    background: #222;
-    color: #fff;
+    padding: 20px;
+    background: #fff;
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
+.logo a {
     font-size: 24px;
     font-weight: bold;
+    text-decoration: none;
+    color: #f8743c;
 }
 
 .nav a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     margin: 0 15px;
     transition: color 0.3s ease;
 }
 
 .nav a:hover {
-    color: #ff9800;
+    color: #f8743c;
 }
 
 /* Контент */
@@ -49,42 +53,131 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 80vh;
+    padding: 20px;
 }
 
 .intro {
     max-width: 50%;
+    background: #e8ecec;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #f8743c;
 }
 
 .btn {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background: #ff9800;
+    background: #f8743c;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background 0.3s ease;
 }
 
 .btn:hover {
-    background: #e68900;
+    background: #e6632a;
 }
 
 /* Заглушка для фото */
 .image-placeholder {
     width: 300px;
     height: 300px;
-    background: #ccc;
+    background: #e8ecec;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     color: #666;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Обертка для контента на странице тестов */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Левая панель с темами */
+.sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #e8ecec;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 15px;
+    color: #f8743c;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #f8743c;
+    color: #fff;
+}
+
+/* Блок с тестами */
+.test-container {
+    width: 70%;
+    padding: 20px;
+    background-color: #e8ecec; /* Добавлен фон */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.test-container h2 {
+    margin-bottom: 20px;
+    color: #f8743c;
+}
+
+#test-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.test-question {
+    margin-bottom: 15px;
+}
+
+.test-question p {
+    font-size: 18px;
+}
+
+.test-question label {
+    display: block;
+    margin: 5px 0;
+}
+
+.test-question input {
+    margin-right: 10px;
 }
 
 /* Адаптивность */
@@ -92,13 +185,15 @@ h1 {
     .content {
         flex-direction: column;
         text-align: center;
-        height: auto;
         padding: 20px 0;
     }
-    .intro {
-        max-width: 100%;
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
     }
-    .image-placeholder {
-        margin-top: 20px;
+
+    .test-container {
+        width: 100%;
     }
 }
