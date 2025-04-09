@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/LOGO.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="images/LOGO.png" alt="Логотип" class="site-logo">
+                <a href="index.html">ОхУжЭтиСети</a>
+            </div>
+        </header>
+        <main class="auth-container">
+            <div class="auth-form">
+                <h2>Регистрация</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regUsername">Имя пользователя:</label>
+                        <input type="text" id="regUsername" required>
+                        <div class="error-message" id="usernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Пароль:</label>
+                        <input type="password" id="regPassword" required>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regGroup">Группа:</label>
+                        <select id="regGroup" required>
+                            <option value="">Выберите группу</option>
+                            <option value="П-12">П-12</option>
+                            <option value="П-22">П-22</option>
+                            <option value="П-32">П-32</option>
+                            <option value="П-43">П-43</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Зарегистрироваться</button>
+                </form>
+                <p>Уже есть аккаунт? <a href="auth.html">Войдите</a></p>
+            </div>
+        </main>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

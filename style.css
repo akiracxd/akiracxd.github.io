@@ -3,18 +3,21 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
 }
 
 body {
     background-color: #fff;
     color: #303030;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    flex: 1;
 }
 
 .header {
@@ -26,6 +29,7 @@ body {
     color: #333;
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .logo a {
@@ -58,52 +62,18 @@ body {
     text-decoration: none;
     margin: 0 15px;
     transition: color 0.3s ease;
+    font-weight: 600;
 }
 
 .nav a:hover {
     color: #f8743c;
 }
 
-@media (max-width: 768px) {
-    .nav {
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: white;
-        width: 200px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        display: none;
-    }
-
-    .nav.active {
-        display: flex;
-    }
-
-    .burger-menu {
-        display: flex;
-    }
-
-    .burger-menu.open div:first-child {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .burger-menu.open div:nth-child(2) {
-        opacity: 0;
-    }
-
-    .burger-menu.open div:last-child {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-}
-
 .content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 80vh;
-    padding: 20px;
+    padding: 20px 0;
+    flex: 1;
 }
 
 .intro {
@@ -120,6 +90,18 @@ h1 {
     color: #f8743c;
 }
 
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #f8743c;
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
 .btn {
     display: inline-block;
     margin-top: 20px;
@@ -129,6 +111,9 @@ h1 {
     text-decoration: none;
     border-radius: 10px;
     transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .btn:hover {
@@ -136,16 +121,21 @@ h1 {
 }
 
 .image-placeholder {
-    width: 300px;
+    width: 45%;
     height: 300px;
     background: #e8ecec;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    color: #666;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .sidebar {
@@ -173,7 +163,7 @@ h1 {
 .sidebar a {
     color: #333;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     display: block;
     padding: 10px;
     border-radius: 10px;
@@ -191,11 +181,7 @@ h1 {
     background-color: #e8ecec;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.test-container h2 {
-    margin-bottom: 20px;
-    color: #f8743c;
+    margin-left: 20px;
 }
 
 #test-content {
@@ -204,27 +190,171 @@ h1 {
 }
 
 .test-question {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .test-question p {
     font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .test-question label {
     display: block;
-    margin: 5px 0;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.test-question label:hover {
+    background: #f0f0f0;
 }
 
 .test-question input {
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.drag-drop-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.drag-item {
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.2s;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.drop-zone {
+    min-height: 100px;
+    border: 2px dashed #f8743c;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.drag-drop-question {
+    margin-bottom: 30px;
+}
+
+.drag-drop-question img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f8743c;
+}
+
+#modal-text {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#modal-close-btn {
+    display: block;
+    margin: 20px auto 0;
 }
 
 @media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav a {
+        margin: 5px 0;
+        padding: 10px;
+    }
+
+    .burger-menu {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
     .content {
         flex-direction: column;
-        text-align: center;
-        padding: 20px 0;
+    }
+
+    .intro {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .image-placeholder {
+        width: 100%;
+        height: 200px;
     }
 
     .sidebar {
@@ -234,18 +364,450 @@ h1 {
 
     .test-container {
         width: 100%;
+        margin-left: 0;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .intro, .sidebar, .test-container {
+        padding: 15px;
     }
 }
 
 .footer {
     background-color: #fff;
-    border-top: 1px solid #333;
+    border-top: 1px solid #e0e0e0;
     text-align: center;
     padding: 20px;
     font-size: 16px;
     color: #333;
+    margin-top: 30px;
 }
 
 .footer p {
     margin: 5px 0;
+    font-weight: 400;
+}
+
+
+/* Современные анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes gradientPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animated {
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.btn-pulse {
+    background: linear-gradient(135deg, #f8743c, #e6632a, #f8743c);
+    background-size: 200% 200%;
+    animation: gradientPulse 3s ease infinite;
+    border: none;
+    color: white;
+}
+
+.drag-item {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.drag-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.drop-zone {
+    min-height: 120px;
+    background: rgba(248, 116, 60, 0.05);
+    transition: all 0.3s ease;
+}
+
+.drop-zone.highlight {
+    background: rgba(248, 116, 60, 0.1);
+    box-shadow: inset 0 0 0 2px #f8743c;
+}
+
+.sequence-instruction {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Стили для последовательности в drop-zone */
+.drop-zone .drag-item {
+    width: 100%;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.drop-zone .drag-item::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: #f8743c;
+    border-radius: 50%;
+}
+
+.drop-zone .drag-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Анимация при правильном ответе */
+.correct-animation {
+    animation: float 0.6s ease, fadeIn 0.4s ease;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .drag-drop-container, .drop-zone {
+        width: 100%;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+    }
+    
+    .btn, .reset-btn {
+        width: 100%;
+    }
+}
+/* Стили для логотипа */
+.site-logo {
+    height: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #f8743c;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .site-logo {
+        height: 30px;
+    }
+}
+/* Стили для страницы авторизации */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-form {
+    background: #e8ecec;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f8743c;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Стили для страницы результатов */
+.results-container {
+    background: #e8ecec;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.result-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.details-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.result-details {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.questions-list {
+    margin-top: 10px;
+}
+
+.question-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ddd;
+}
+
+.question-item.correct {
+    border-left-color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.question-item.incorrect {
+    border-left-color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+}
+
+/* Защита от перетаскивания между вопросами */
+[draggable="true"] {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.drag-drop-container .drag-item {
+    pointer-events: auto;
+}
+
+.drop-zone .drag-item {
+    pointer-events: none;
+}
+
+/* Стили для элементов последовательности */
+.drag-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: grab;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.drag-item.dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.item-index {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: #f8743c;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.drop-zone .item-index {
+    display: flex;
+}
+
+.item-text {
+    flex-grow: 1;
+}
+
+/* Цвета для правильных/неправильных ответов */
+.drag-item.correct .item-index {
+    background-color: #4CAF50 !important;
+}
+
+.drag-item.incorrect .item-index {
+    background-color: #F44336 !important;
+}
+
+.sequence-hint {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 15px;
+    font-style: italic;
+}
+
+/* Подсветка зоны сброса при перетаскивании */
+.drop-zone.highlight {
+    background: rgba(248, 116, 60, 0.1);
+    box-shadow: inset 0 0 0 2px #f8743c;
+}
+/* Стили для личного кабинета в навигации */
+.nav a[href="results.html"],
+.nav a[href="auth.html"] {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+/* Стили для единой кнопки проверки */
+.btn-check-all {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 12px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #f8743c, #e6632a);
+    border: none;
+}
+
+.btn-check-all:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .nav a[href="results.html"],
+    .nav a[href="auth.html"] {
+        margin-left: 0;
+        order: 3;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn-check-all {
+        width: 90%;
+    }
+}
+/* Стили для русских названий в результатах */
+.result-item h3 {
+    color: #f8743c;
+    margin-bottom: 10px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .nav a[href="results.html"], 
+    .nav a[href="auth.html"] {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+    }
+}
+
+/* Стили для кнопки сброса */
+.reset-btn {
+    background-color: #6c757d;
+    margin-top: 10px;
+    padding: 8px 15px;
+    font-size: 14px;
+    margin-bottom: 60px;
+}
+
+.reset-btn:hover {
+    background-color: #5a6268;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/* Стили для перетаскивания */
+.drag-drop-container {
+    min-height: 60px;
+    padding: 10px;
+    background-color: rgba(248, 116, 60, 0.05);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.drop-zone {
+    min-height: 60px;
+    background-color: rgba(248, 116, 60, 0.05);
+    border: 2px dashed #f8743c;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.drop-zone.highlight {
+    background-color: rgba(248, 116, 60, 0.1);
 }
